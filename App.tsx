@@ -48,34 +48,34 @@ function AppContent() {
       <Navbar />
       <Hero />
       <main>
-        {/* About Section: Re-designed for humility and practicality */}
-        <section id="about" className="py-40 md:py-72 bg-black relative overflow-hidden spotlight-bg">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-gold/20 to-transparent"></div>
+        {/* About Section: Modern Clarity Approach */}
+        <section id="about" className="py-32 md:py-60 bg-black relative overflow-hidden spotlight-bg">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-gold/10 to-transparent"></div>
           
           <div className="max-w-5xl mx-auto px-8 text-center flex flex-col items-center">
             <div className="mb-16 md:mb-24 flex flex-col items-center">
-               <span className="text-[10px] text-gold mb-2 font-medium tracking-[0.1em]">작업의 태도</span>
-               <span className="text-white/30 tracking-[0.5em] text-[9px] uppercase font-light">Work Ethic</span>
+               <span className="text-[10px] text-gold/60 mb-2 font-medium tracking-[0.1em]">디자인에 담는 가치</span>
+               <span className="text-white/10 tracking-[0.5em] text-[9px] uppercase font-light">The Depth of Understanding</span>
             </div>
 
             <div className="max-w-4xl">
-              <h2 className="text-xl md:text-3xl lg:text-4xl font-serif text-white mb-16 md:mb-24 leading-[1.8] md:leading-[2] tracking-tight">
-                "디자인은 거창한 예술보다<br className="md:hidden" />
-                <span className="font-light text-gold-gradient px-1">기본을 지키는 정성</span>에서<br className="md:hidden" /> 시작된다고 믿습니다."
+              <h2 className="text-xl md:text-3xl lg:text-4xl font-serif text-white/90 mb-16 md:mb-24 leading-[1.8] md:leading-[2] tracking-tight">
+                "단순히 예쁜 것을 만드는 것보다<br className="md:hidden" />
+                <span className="font-light text-gold-gradient px-1">복잡함을 덜어내고 본질을 남기는 것</span>이<br className="md:hidden" /> 저희가 가장 잘하는 일입니다."
               </h2>
             </div>
 
             <div className="max-w-2xl mx-auto space-y-8">
-              <p className="text-grayText text-sm md:text-base font-light leading-[2] tracking-wide opacity-50">
-                우리는 스스로를 대단한 아티스트라고 생각하지 않습니다.<br className="hidden md:block" /> 
-                대신 고객의 고민을 귀담아듣고, 누구나 이해하기 쉬운<br className="hidden md:block" /> 
-                깔끔한 결과물을 내기 위해 한 번 더 고민하는 파트너가 되고자 합니다.
+              <p className="text-grayText text-sm md:text-base font-light leading-[2] tracking-wide opacity-40">
+                좋은 디자인은 사용자에게 말을 거는 대신, 편안하게 스며듭니다.<br className="hidden md:block" /> 
+                우리는 화려한 수식어를 걷어낸 자리에 브랜드의 진심이<br className="hidden md:block" /> 
+                명확히 보일 수 있도록 끈질기게 고민하고 다듬습니다.
               </p>
               
               <div className="pt-12">
-                 <div className="inline-flex flex-col items-center opacity-40">
+                 <div className="inline-flex flex-col items-center opacity-20">
                     <div className="w-12 h-px bg-gold/50 mb-4"></div>
-                    <span className="text-[8px] tracking-[0.4em] uppercase text-white font-light">Simple, Clear, and Responsible</span>
+                    <span className="text-[8px] tracking-[0.4em] uppercase text-white font-light">Minimalism with Maximum impact</span>
                  </div>
               </div>
             </div>
