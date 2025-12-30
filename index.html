@@ -65,20 +65,20 @@
             line-height: 1.6;
         }
 
+        /* Prevent the grain overlay from intercepting clicks or being too dark */
         .grain-overlay::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
-            z-index: 1; /* 낮은 z-index로 텍스트 가림 방지 */
-            opacity: 0.012;
+            z-index: 1; 
+            opacity: 0.015;
             background-image: url("https://grainy-gradients.vercel.app/noise.svg");
         }
 
         #root {
             position: relative;
             z-index: 10;
-            min-height: 100vh;
         }
 
         .text-balance { text-wrap: balance; }
@@ -87,9 +87,17 @@
         ::-webkit-scrollbar-track { background: #030303; }
         ::-webkit-scrollbar-thumb { background: #B89B5E; border-radius: 10px; }
 
-        .stagger-1 { animation-delay: 0.2s; }
-        .stagger-2 { animation-delay: 0.4s; }
-        .stagger-3 { animation-delay: 0.6s; }
+        /* Staggered animation delays */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+
+        /* Custom typography utility for big text */
+        .heading-hero {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            line-height: 1.25;
+            letter-spacing: -0.03em;
+        }
     </style>
 <script type="importmap">
 {
