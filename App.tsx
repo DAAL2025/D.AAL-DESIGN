@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -48,34 +47,35 @@ function AppContent() {
       <Navbar />
       <Hero />
       <main>
-        {/* About Section: Modern Clarity Approach */}
-        <section id="about" className="py-32 md:py-60 bg-black relative overflow-hidden spotlight-bg">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-gold/10 to-transparent"></div>
+        {/* About Section: Refined Typography & Spacing */}
+        <section id="about" className="py-40 md:py-64 bg-black relative overflow-hidden spotlight-bg">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-gold/20 to-transparent"></div>
           
-          <div className="max-w-5xl mx-auto px-8 text-center flex flex-col items-center">
-            <div className="mb-16 md:mb-24 flex flex-col items-center">
-               <span className="text-[10px] text-gold/60 mb-2 font-medium tracking-[0.1em]">디자인에 담는 가치</span>
-               <span className="text-white/10 tracking-[0.5em] text-[9px] uppercase font-light">The Depth of Understanding</span>
+          <div className="max-w-6xl mx-auto px-8 text-center flex flex-col items-center">
+            <div className="mb-20 md:mb-32 flex flex-col items-center">
+               <span className="text-[10px] md:text-[11px] text-gold/60 mb-3 font-medium tracking-[0.2em]">우리의 태도</span>
+               <span className="text-white/10 tracking-[0.6em] text-[9px] uppercase font-light">Honest Design approach</span>
             </div>
 
-            <div className="max-w-4xl">
-              <h2 className="text-xl md:text-3xl lg:text-4xl font-serif text-white/90 mb-16 md:mb-24 leading-[1.8] md:leading-[2] tracking-tight">
-                "단순히 예쁜 것을 만드는 것보다<br className="md:hidden" />
-                <span className="font-light text-gold-gradient px-1">복잡함을 덜어내고 본질을 남기는 것</span>이<br className="md:hidden" /> 저희가 가장 잘하는 일입니다."
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-xl md:text-4xl lg:text-[40px] font-serif text-white/90 mb-20 md:mb-32 leading-[1.8] md:leading-[1.6] tracking-tight">
+                "특별해 보이려 애쓰기보다<br className="md:hidden" />
+                <span className="font-light text-gold-gradient px-2 italic">불편함을 해결하는 명확한 답</span>을<br className="md:hidden" /> 
+                내놓는 것에 더 큰 가치를 둡니다"
               </h2>
             </div>
 
-            <div className="max-w-2xl mx-auto space-y-8">
-              <p className="text-grayText text-sm md:text-base font-light leading-[2] tracking-wide opacity-40">
-                좋은 디자인은 사용자에게 말을 거는 대신, 편안하게 스며듭니다.<br className="hidden md:block" /> 
-                우리는 화려한 수식어를 걷어낸 자리에 브랜드의 진심이<br className="hidden md:block" /> 
-                명확히 보일 수 있도록 끈질기게 고민하고 다듬습니다.
+            <div className="max-w-2xl mx-auto space-y-10">
+              <p className="text-grayText/40 text-sm md:text-lg font-light leading-[2.2] tracking-wide break-keep">
+                디자인은 화려한 예술이 아니라, 가장 친절한 소통이어야 합니다.<br className="hidden md:block" /> 
+                우리는 수많은 아이디어를 늘어놓는 대신,<br className="hidden md:block" /> 
+                가장 필요한 것 하나를 선명하게 다듬는 과정을 즐깁니다.
               </p>
               
-              <div className="pt-12">
-                 <div className="inline-flex flex-col items-center opacity-20">
-                    <div className="w-12 h-px bg-gold/50 mb-4"></div>
-                    <span className="text-[8px] tracking-[0.4em] uppercase text-white font-light">Minimalism with Maximum impact</span>
+              <div className="pt-16">
+                 <div className="inline-flex flex-col items-center opacity-30">
+                    <div className="w-16 h-px bg-gold/40 mb-5"></div>
+                    <span className="text-[8px] md:text-[9px] tracking-[0.5em] uppercase text-white font-light">Sincerity over Sophistication</span>
                  </div>
               </div>
             </div>
