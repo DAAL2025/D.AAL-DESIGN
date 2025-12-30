@@ -13,46 +13,46 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2564&auto=format&fit=crop" 
-          className="w-full h-full object-cover grayscale opacity-[0.08] animate-ken-burns" 
+          className="w-full h-full object-cover grayscale opacity-[0.15] animate-ken-burns" 
           alt="Work Desk" 
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center px-6 w-full text-center">
-        <div className="mb-14 md:mb-16">
-          <p className="text-gold/80 tracking-[0.35em] text-[10px] md:text-[11px] font-semibold mb-4 animate-fade-in-up">
+        <div className="mb-12 md:mb-16">
+          <p className="text-gold/80 tracking-[0.4em] text-[10px] md:text-[11px] font-semibold mb-4 animate-fade-in-up">
             생각의 결이 담긴 정돈된 디자인
           </p>
-          <div className="w-10 h-px bg-gold/20 mx-auto mb-4"></div>
+          <div className="w-10 h-px bg-gold/30 mx-auto mb-4"></div>
           <p className="text-white/20 tracking-[0.5em] text-[8px] md:text-[9px] uppercase font-light animate-fade-in-up">
             Plain but powerful communication
           </p>
         </div>
         
-        <div className="max-w-5xl mx-auto mb-14 md:mb-16 px-2">
-          <h1 className="text-[28px] md:text-[56px] lg:text-[72px] font-serif font-normal text-white heading-tight animate-fade-in-up stagger-1 break-keep">
-            멋부리는 기술보다 <br className="md:hidden" />
-            <span className="text-gold-gradient font-light px-2 italic">잘 읽히는 구조</span>가<br className="hidden md:block" /> 
+        <div className="max-w-4xl mx-auto mb-12 md:mb-16 px-4">
+          <h1 className="text-[30px] md:text-[52px] lg:text-[68px] font-serif font-normal text-white leading-[1.3] tracking-tighter animate-fade-in-up stagger-1 text-balance">
+            멋부리는 기술보다 <br className="hidden md:block" />
+            <span className="text-gold-gradient font-light px-1 italic">잘 읽히는 구조</span>가<br className="md:hidden" /> 
             먼저라고 생각합니다
           </h1>
         </div>
         
-        <div className="max-w-2xl mx-auto mb-20 md:mb-24 opacity-0 animate-fade-in-up stagger-2 px-4">
-          <p className="text-grayText/40 text-[14px] md:text-lg font-light leading-[1.8] md:leading-[2] tracking-tight break-keep">
+        <div className="max-w-2xl mx-auto mb-16 md:mb-24 opacity-0 animate-fade-in-up stagger-2 px-6">
+          <p className="text-grayText/50 text-[14px] md:text-[17px] font-light leading-[1.8] md:leading-[2] tracking-normal">
             D.AAL DESIGN은 화려한 수식어로 본질을 가리지 않습니다.<br className="hidden md:block" />
-            당신의 진심이 고객에게 가장 정직하게 닿는 길을 찾습니다.
+            당신의 진심이 고객에게 가장 정직하게 닿는 길을 디자인합니다.
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-8 md:gap-16 justify-center items-center opacity-0 animate-fade-in-up stagger-3">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-14 justify-center items-center opacity-0 animate-fade-in-up stagger-3">
           <button 
             onClick={() => scrollToSection('contact')}
             className="group relative px-14 py-4 bg-transparent border border-white/10 text-white font-light transition-all duration-700 hover:border-gold/60"
           >
             <span className="flex flex-col items-center">
-              <span className="text-[11px] mb-1 font-sans tracking-widest group-hover:text-gold transition-colors">대화 시작하기</span>
-              <span className="tracking-[0.4em] text-[7px] uppercase opacity-20 group-hover:opacity-100 transition-opacity">Contact Us</span>
+              <span className="text-[11px] mb-1 font-sans tracking-[0.2em] group-hover:text-gold transition-colors">대화 시작하기</span>
+              <span className="tracking-[0.5em] text-[7px] uppercase opacity-20 group-hover:opacity-100 transition-opacity">Contact Us</span>
             </span>
           </button>
           
@@ -60,13 +60,13 @@ const Hero: React.FC = () => {
             onClick={() => scrollToSection('portfolio')}
             className="group text-muted/60 hover:text-white transition-all duration-500 font-light tracking-widest text-[11px] flex flex-col items-center py-2"
           >
-            <span className="mb-1 font-sans tracking-widest">작업의 기록들</span>
-            <span className="tracking-[0.5em] text-[7px] uppercase opacity-20 group-hover:opacity-100 transition-opacity">Archive</span>
+            <span className="mb-1 font-sans tracking-[0.2em]">작업의 기록들</span>
+            <span className="tracking-[0.6em] text-[7px] uppercase opacity-20 group-hover:opacity-100 transition-opacity">Archive</span>
           </button>
         </div>
       </div>
       
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-20">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-20 hidden md:block">
         <div className="w-px h-24 bg-gradient-to-b from-gold via-gold/50 to-transparent"></div>
       </div>
     </header>
