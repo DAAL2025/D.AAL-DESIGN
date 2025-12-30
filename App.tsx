@@ -47,35 +47,35 @@ function AppContent() {
       <Navbar />
       <Hero />
       <main>
-        {/* About Section: Refined Typography & Spacing */}
-        <section id="about" className="py-40 md:py-64 bg-black relative overflow-hidden spotlight-bg">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-gold/20 to-transparent"></div>
+        {/* About Section: Re-designed Typography Flow */}
+        <section id="about" className="py-48 md:py-80 bg-black relative overflow-hidden spotlight-bg">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-48 bg-gradient-to-b from-gold/30 to-transparent"></div>
           
-          <div className="max-w-6xl mx-auto px-8 text-center flex flex-col items-center">
-            <div className="mb-20 md:mb-32 flex flex-col items-center">
-               <span className="text-[10px] md:text-[11px] text-gold/60 mb-3 font-medium tracking-[0.2em]">우리의 태도</span>
-               <span className="text-white/10 tracking-[0.6em] text-[9px] uppercase font-light">Honest Design approach</span>
+          <div className="max-w-7xl mx-auto px-8 text-center flex flex-col items-center">
+            <div className="mb-28 md:mb-48 flex flex-col items-center">
+               <span className="text-[11px] text-gold/80 mb-4 font-semibold tracking-[0.3em]">우리의 태도</span>
+               <span className="text-white/10 tracking-[0.8em] text-[9px] uppercase font-light">Honest Design approach</span>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-xl md:text-4xl lg:text-[40px] font-serif text-white/90 mb-20 md:mb-32 leading-[1.8] md:leading-[1.6] tracking-tight">
+            <div className="max-w-5xl mx-auto mb-28 md:mb-48">
+              <h2 className="text-[24px] md:text-[48px] lg:text-[60px] font-serif text-white/95 heading-tight break-keep">
                 "특별해 보이려 애쓰기보다<br className="md:hidden" />
-                <span className="font-light text-gold-gradient px-2 italic">불편함을 해결하는 명확한 답</span>을<br className="md:hidden" /> 
+                <span className="font-light text-gold-gradient px-3 italic">불편함을 해결하는 명확한 답</span>을<br className="md:hidden" /> 
                 내놓는 것에 더 큰 가치를 둡니다"
               </h2>
             </div>
 
-            <div className="max-w-2xl mx-auto space-y-10">
-              <p className="text-grayText/40 text-sm md:text-lg font-light leading-[2.2] tracking-wide break-keep">
+            <div className="max-w-2xl mx-auto">
+              <p className="text-grayText/40 text-[15px] md:text-[20px] font-light leading-[2.2] md:leading-[2.5] tracking-tight break-keep">
                 디자인은 화려한 예술이 아니라, 가장 친절한 소통이어야 합니다.<br className="hidden md:block" /> 
                 우리는 수많은 아이디어를 늘어놓는 대신,<br className="hidden md:block" /> 
                 가장 필요한 것 하나를 선명하게 다듬는 과정을 즐깁니다.
               </p>
               
-              <div className="pt-16">
-                 <div className="inline-flex flex-col items-center opacity-30">
-                    <div className="w-16 h-px bg-gold/40 mb-5"></div>
-                    <span className="text-[8px] md:text-[9px] tracking-[0.5em] uppercase text-white font-light">Sincerity over Sophistication</span>
+              <div className="pt-28 md:pt-40">
+                 <div className="inline-flex flex-col items-center opacity-40">
+                    <div className="w-24 h-px bg-gold/40 mb-8"></div>
+                    <span className="text-[9px] md:text-[10px] tracking-[0.8em] uppercase text-white font-light">Sincerity over Sophistication</span>
                  </div>
               </div>
             </div>

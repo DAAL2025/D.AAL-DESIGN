@@ -28,12 +28,12 @@ const services: Service[] = [
 
 const IconWrapper = ({ name }: { name: string }) => {
   const strokeWidth = 0.5;
-  const size = 30;
+  const size = 32;
   switch (name) {
-    case 'pen-tool': return <PenTool strokeWidth={strokeWidth} size={size} className="text-gold/50" />;
-    case 'layout': return <Layout strokeWidth={strokeWidth} size={size} className="text-gold/50" />;
-    case 'monitor': return <Monitor strokeWidth={strokeWidth} size={size} className="text-gold/50" />;
-    default: return <Sparkles strokeWidth={strokeWidth} size={size} className="text-gold/50" />;
+    case 'pen-tool': return <PenTool strokeWidth={strokeWidth} size={size} className="text-gold/60" />;
+    case 'layout': return <Layout strokeWidth={strokeWidth} size={size} className="text-gold/60" />;
+    case 'monitor': return <Monitor strokeWidth={strokeWidth} size={size} className="text-gold/60" />;
+    default: return <Sparkles strokeWidth={strokeWidth} size={size} className="text-gold/60" />;
   }
 };
 
@@ -43,42 +43,42 @@ const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="py-40 md:py-64 bg-dark spotlight-bg border-y border-white/[0.03]">
+    <section id="services" className="py-48 md:py-80 bg-dark spotlight-bg border-y border-white/[0.03]">
       <div className="max-w-7xl mx-auto px-8">
-        <div className="flex flex-col items-center mb-32 md:mb-52 text-center">
-          <p className="text-[10px] md:text-[11px] text-gold/60 mb-3 font-medium tracking-[0.2em]">협업의 범위</p>
-          <p className="text-white/10 text-[9px] tracking-[0.6em] font-light uppercase mb-8">Service Focus</p>
-          <h2 className="text-4xl md:text-6xl font-serif text-white/90 tracking-tight">Plain <span className="italic font-light opacity-60">Support</span></h2>
+        <div className="flex flex-col items-center mb-36 md:mb-60 text-center">
+          <p className="text-[11px] text-gold/80 mb-4 font-semibold tracking-[0.25em]">협업의 범위</p>
+          <p className="text-white/10 text-[9px] tracking-[0.7em] font-light uppercase mb-10">Service Focus</p>
+          <h2 className="text-[34px] md:text-6xl font-serif text-white/90 tracking-tight">Plain <span className="italic font-light opacity-50">Support</span></h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid lg:grid-cols-3 gap-10 md:gap-14">
           {services.map((service) => (
             <div 
               key={service.id} 
-              className="group p-12 md:p-14 border border-white/5 bg-black/10 transition-all duration-1000 hover:border-white/10 flex flex-col"
+              className="group p-12 md:p-16 border border-white/5 bg-black/20 transition-all duration-1000 hover:border-white/10 flex flex-col"
             >
-              <div className="mb-14 opacity-40 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-110 origin-left">
+              <div className="mb-16 opacity-40 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105 origin-left">
                 <IconWrapper name={service.icon} />
               </div>
               
-              <div className="mb-8">
-                <p className="text-[10px] text-gold/40 font-sans mb-3 tracking-widest uppercase">{service.krTitle}</p>
-                <h3 className="text-xl md:text-2xl font-light text-white group-hover:text-gold transition-all duration-700 tracking-wide">
+              <div className="mb-10">
+                <p className="text-[10px] text-gold/50 font-sans mb-3 tracking-[0.2em] uppercase">{service.krTitle}</p>
+                <h3 className="text-2xl md:text-[26px] font-light text-white group-hover:text-gold transition-all duration-700 tracking-wide">
                   {service.title}
                 </h3>
               </div>
               
-              <div className="h-px w-8 bg-white/10 mb-8 group-hover:w-16 transition-all duration-700"></div>
+              <div className="h-px w-10 bg-white/10 mb-10 group-hover:w-20 transition-all duration-1000"></div>
               
-              <p className="text-grayText/30 text-sm md:text-[15px] font-light leading-[1.8] group-hover:text-grayText/60 transition-all duration-700 flex-grow break-keep">
+              <p className="text-grayText/30 text-sm md:text-base font-light leading-[2] group-hover:text-grayText/60 transition-all duration-700 flex-grow break-keep">
                 {service.description}
               </p>
               
               <button 
                 onClick={scrollToContact}
-                className="mt-16 flex items-center gap-3 text-[10px] text-muted/40 font-medium tracking-[0.4em] uppercase opacity-0 group-hover:opacity-100 transition-all duration-700 translate-x-[-10px] group-hover:translate-x-0"
+                className="mt-16 flex items-center gap-4 text-[11px] text-muted/40 font-medium tracking-[0.4em] uppercase opacity-0 group-hover:opacity-100 transition-all duration-700 translate-x-[-10px] group-hover:translate-x-0"
               >
-                상담 문의하기 <ChevronRight size={12} className="opacity-50" />
+                상담 문의 <ChevronRight size={14} className="opacity-40" />
               </button>
             </div>
           ))}
