@@ -1,14 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar.tsx';
-import Hero from './components/Hero.tsx';
-import Services from './components/Services.tsx';
-import Portfolio from './components/Portfolio.tsx';
-import Blog from './components/Blog.tsx';
-import Contact from './components/Contact.tsx';
-import Footer from './components/Footer.tsx';
-import AdminPanel from './components/AdminPanel.tsx';
-import LoginModal from './components/LoginModal.tsx';
-import { ContentProvider } from './contexts/ContentContext.tsx';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import Portfolio from './components/Portfolio';
+import Blog from './components/Blog';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import AdminPanel from './components/AdminPanel';
+import LoginModal from './components/LoginModal';
+import { ContentProvider } from './contexts/ContentContext';
 
 function AppContent() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
@@ -59,7 +60,7 @@ function AppContent() {
             </div>
 
             <div className="max-w-5xl mx-auto mb-20 md:mb-32">
-              <h2 className="text-[28px] md:text-[52px] lg:text-[64px] font-serif text-white/95 leading-[1.2] md:leading-[1.15] tracking-[-0.05em] text-balance break-keep">
+              <h2 className="text-[30px] md:text-[54px] lg:text-[68px] font-serif text-white/95 leading-[1.1] md:leading-[1.1] tracking-[-0.05em] text-balance break-keep">
                 "특별해 보이려 애쓰기보다<br className="md:hidden" />
                 <span className="font-light text-gold-gradient px-4 italic">불편함을 해결하는 명확한 답</span>을<br className="md:hidden" /> 
                 내놓는 것에 더 큰 가치를 둡니다"
