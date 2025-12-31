@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { BlogPost } from "../types";
 
 /**
- * Handles API key selection errors by triggering the AI Studio key selection dialog.
+ * AI Studio 키 선택 대화상자를 여는 헬퍼 함수
  */
 const handleKeyError = async () => {
   if (typeof window !== 'undefined' && window.aistudio) {
@@ -16,24 +16,24 @@ const handleKeyError = async () => {
 };
 
 /**
- * Generates blog posts using the Gemini 3 Flash model.
- * Always initializes a new client instance to ensure it uses the most current API key from the environment.
+ * Gemini API를 사용하여 디자인 인사이트(블로그 포스트)를 생성합니다.
  */
 export const generateDesignInsights = async (): Promise<BlogPost[]> => {
-  // Check API key selection status if running in the browser with AI Studio tools available
+  // 브라우저 환경에서 AI Studio 키 선택 여부 확인
   if (typeof window !== 'undefined' && window.aistudio) {
     try {
       const hasKey = await window.aistudio.hasSelectedApiKey();
+      // 키가 없고 환경 변수에도 키가 없는 경우에만 팝업 호출
       if (!hasKey && !process.env.API_KEY) {
-        // If no key is present, prompt the user. Assume success after opening dialog as per guidelines.
         await handleKeyError();
       }
     } catch (e) {
-      console.debug("Optional API key check skipped or failed", e);
+      console.debug("Optional API key check skipped", e);
     }
   }
 
-  // Initialize the GoogleGenAI client with the API key from process.env.API_KEY directly.
+  // GoogleGenAI 클라이언트 초기화
+  // process.env.API_KEY는 index.html의 shim과 types.ts 선언 덕분에 타입 에러 없이 접근 가능합니다.
   const ai = new GoogleGenAI({ 
     apiKey: process.env.API_KEY 
   });
@@ -62,12 +62,12 @@ export const generateDesignInsights = async (): Promise<BlogPost[]> => {
       }
     });
 
-    // Extract generated text directly from the response object's text property.
-    const jsonStr = response.text?.trim() || '[]';
+    // 결과 텍스트를 JSON으로 파싱
+    const jsonStr = response.text || '[]';
     return JSON.parse(jsonStr);
   } catch (e: any) {
     console.error("Failed to generate insights", e);
-    // If the request fails with a "not found" error, reset key selection state and prompt user.
+    // API 키 관련 오류 발생 시 다시 키 선택 안내
     if (e.message?.includes("Requested entity was not found.") || e.message?.includes("API_KEY")) {
       await handleKeyError();
     }
