@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
         </div>
         
         <div className="max-w-6xl mx-auto mb-14 md:mb-20 px-4">
-          <h1 className="text-[34px] md:text-[60px] lg:text-[82px] font-serif font-normal text-white leading-[1.2] md:leading-[1.15] tracking-tighter animate-fade-in-up stagger-1 break-keep text-balance">
+          <h1 className="heading-luxury font-serif font-normal text-white animate-fade-in-up stagger-1 break-keep text-balance">
             멋부리는 기술보다 <br className="md:hidden" />
             <span className="text-gold-gradient font-light px-2 italic">잘 읽히는 구조</span>가<br className="md:hidden" /> 
             먼저라고 생각합니다

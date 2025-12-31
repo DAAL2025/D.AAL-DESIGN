@@ -2,7 +2,9 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { BlogPost } from "../types";
 
-// Only call this if an error occurs to avoid pre-emptive blocking by the environment
+/**
+ * Handles API key selection errors by triggering the AI Studio key selection dialog.
+ */
 const handleKeyError = async () => {
   if (typeof window !== 'undefined' && window.aistudio) {
     try {
@@ -13,9 +15,28 @@ const handleKeyError = async () => {
   }
 };
 
+/**
+ * Generates blog posts using the Gemini 3 Flash model.
+ * Always initializes a new client instance to ensure it uses the most current API key from the environment.
+ */
 export const generateDesignInsights = async (): Promise<BlogPost[]> => {
-  // Always create a new instance right before making an API call to ensure it uses the most up-to-date API key
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // Check API key selection status if running in the browser with AI Studio tools available
+  if (typeof window !== 'undefined' && window.aistudio) {
+    try {
+      const hasKey = await window.aistudio.hasSelectedApiKey();
+      if (!hasKey && !process.env.API_KEY) {
+        // If no key is present, prompt the user. Assume success after opening dialog as per guidelines.
+        await handleKeyError();
+      }
+    } catch (e) {
+      console.debug("Optional API key check skipped or failed", e);
+    }
+  }
+
+  // Initialize the GoogleGenAI client with the API key from process.env.API_KEY directly.
+  const ai = new GoogleGenAI({ 
+    apiKey: process.env.API_KEY 
+  });
   
   try {
     const response = await ai.models.generateContent({
@@ -41,14 +62,15 @@ export const generateDesignInsights = async (): Promise<BlogPost[]> => {
       }
     });
 
-    // Access .text property directly as per Gemini API best practices
-    return JSON.parse(response.text || '[]');
+    // Extract generated text directly from the response object's text property.
+    const jsonStr = response.text?.trim() || '[]';
+    return JSON.parse(jsonStr);
   } catch (e: any) {
-    // If the request fails with an error indicating key issues, prompt for key selection
+    console.error("Failed to generate insights", e);
+    // If the request fails with a "not found" error, reset key selection state and prompt user.
     if (e.message?.includes("Requested entity was not found.") || e.message?.includes("API_KEY")) {
       await handleKeyError();
     }
-    console.error("Failed to generate insights", e);
     return [];
   }
 };
