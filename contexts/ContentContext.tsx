@@ -30,21 +30,43 @@ const DEFAULT_POSTS: BlogPost[] = [
 
 export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [projects, setProjects] = useState<Project[]>(() => {
-    const saved = localStorage.getItem('daal_projects');
-    return saved ? JSON.parse(saved) : DEFAULT_PROJECTS;
+    try {
+      const saved = localStorage.getItem('daal_projects');
+      if (!saved) return DEFAULT_PROJECTS;
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : DEFAULT_PROJECTS;
+    } catch (e) {
+      console.error("Failed to parse projects from localStorage", e);
+      return DEFAULT_PROJECTS;
+    }
   });
 
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(() => {
-    const saved = localStorage.getItem('daal_blog_posts');
-    return saved ? JSON.parse(saved) : DEFAULT_POSTS;
+    try {
+      const saved = localStorage.getItem('daal_blog_posts');
+      if (!saved) return DEFAULT_POSTS;
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : DEFAULT_POSTS;
+    } catch (e) {
+      console.error("Failed to parse blog posts from localStorage", e);
+      return DEFAULT_POSTS;
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem('daal_projects', JSON.stringify(projects));
+    try {
+      localStorage.setItem('daal_projects', JSON.stringify(projects));
+    } catch (e) {
+      console.error("Failed to save projects to localStorage", e);
+    }
   }, [projects]);
 
   useEffect(() => {
-    localStorage.setItem('daal_blog_posts', JSON.stringify(blogPosts));
+    try {
+      localStorage.setItem('daal_blog_posts', JSON.stringify(blogPosts));
+    } catch (e) {
+      console.error("Failed to save blog posts to localStorage", e);
+    }
   }, [blogPosts]);
 
   const addProject = (p: Project) => setProjects([...projects, { ...p, id: Date.now() }]);

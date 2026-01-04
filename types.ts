@@ -30,7 +30,7 @@ export interface DesignStrategy {
 }
 
 /**
- * Interface for AI Studio key selection tools
+ * AI Studio에서 제공하는 키 선택 도구 인터페이스
  */
 export interface AIStudio {
   hasSelectedApiKey: () => Promise<boolean>;
@@ -38,19 +38,30 @@ export interface AIStudio {
 }
 
 /**
- * Global type augmentations to resolve 'tsc' build errors.
- * This tells TypeScript that 'window.aistudio' and 'process' exist at runtime.
+ * 전역 타입 확장
+ * tsc가 window.aistudio 및 process.env를 인식하도록 합니다.
  */
 declare global {
-  interface Window {
-    // Fix: Subsequent property declarations must have the same type.
-    // Use 'any' to avoid conflicts with other definitions of 'aistudio' in the environment.
-    aistudio?: any;
+  // Fix: Declare AIStudio globally and augment Window to avoid "Subsequent property declarations must have the same type" errors.
+  interface AIStudio {
+    hasSelectedApiKey: () => Promise<boolean>;
+    openSelectKey: () => Promise<void>;
   }
 
-  // Fix: Cannot redeclare block-scoped variable 'process'.
-  // We remove the manual declaration of 'process' and assume it is provided by the environment.
+  interface Window {
+    aistudio: AIStudio;
+  }
+
+  namespace NodeJS {
+    interface ProcessEnv {
+      API_KEY: string;
+      [key: string]: string | undefined;
+    }
+  }
+
+  // Fix: Removed 'var process' declaration to fix "Cannot redeclare block-scoped variable 'process'" error.
+  // The global 'process' is provided by the environment or build shims (e.g., via vite.config.ts).
 }
 
-// Ensure this file is treated as a module
+// 이 파일이 모듈로 취급되도록 합니다.
 export {};

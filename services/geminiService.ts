@@ -16,15 +16,14 @@ const handleKeyError = async () => {
 };
 
 /**
- * Gemini 3 Flash 모델을 사용하여 프리미엄 디자인 인사이트를 생성합니다.
+ * Gemini 모델을 사용하여 프리미엄 디자인 인사이트를 생성합니다.
  */
 export const generateDesignInsights = async (): Promise<BlogPost[]> => {
-  // 런타임에 API 키 선택 여부를 확인합니다.
+  // Ensure we check for API key selection state as per guidelines.
   if (typeof window !== 'undefined' && window.aistudio) {
     try {
       const hasKey = await window.aistudio.hasSelectedApiKey();
-      // 환경 변수에도 키가 없고, 사용자가 키를 선택하지 않은 경우 팝업을 띄웁니다.
-      if (!hasKey && !process.env.API_KEY) {
+      if (!hasKey) {
         await handleKeyError();
       }
     } catch (e) {
@@ -32,7 +31,8 @@ export const generateDesignInsights = async (): Promise<BlogPost[]> => {
     }
   }
 
-  // 매 호출 시 최신 API 키를 사용하도록 인스턴스를 생성합니다.
+  // Create a new instance right before making an API call to ensure it always uses the most up-to-date API key.
+  // ALWAYS use process.env.API_KEY directly when initializing the GoogleGenAI client instance.
   const ai = new GoogleGenAI({ 
     apiKey: process.env.API_KEY 
   });
@@ -61,12 +61,13 @@ export const generateDesignInsights = async (): Promise<BlogPost[]> => {
       }
     });
 
-    // .text 프로퍼티를 통해 직접 텍스트 결과를 가져옵니다.
-    const jsonStr = response.text || '[]';
+    // The text property returns the generated string output.
+    const jsonStr = (response.text || '[]').trim();
     return JSON.parse(jsonStr);
   } catch (e: any) {
     console.error("Failed to generate insights", e);
-    // API 키 관련 오류(404 등) 발생 시 키 선택 대화상자를 다시 호출합니다.
+    // If the request fails with an error message containing "Requested entity was not found.", 
+    // reset the key selection state and prompt the user to select a key again via openSelectKey().
     if (e.message?.includes("Requested entity was not found.") || e.message?.includes("API_KEY")) {
       await handleKeyError();
     }
