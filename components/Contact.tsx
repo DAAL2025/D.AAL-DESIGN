@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { CheckCircle, Loader2 } from 'lucide-react';
 
@@ -12,15 +11,31 @@ const Contact: React.FC = () => {
     
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
 
     try {
-      // Simulate API call or real fetch
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setIsSubmitted(true);
-      form.reset();
+      const response = await fetch("https://formspree.io/f/xojabpea", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        form.reset();
+      } else {
+        const data = await response.json();
+        // Replace Object.hasOwn with Object.prototype.hasOwnProperty.call for broader compatibility
+        if (Object.prototype.hasOwnProperty.call(data, 'errors')) {
+          throw new Error(data["errors"].map((error: any) => error["message"]).join(", "));
+        } else {
+          throw new Error('전송 중 오류가 발생했습니다.');
+        }
+      }
     } catch (error) {
-      alert('문의 전송에 실패했습니다.');
+      console.error("Form error:", error);
+      alert('문의 전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
     } finally {
       setIsSubmitting(false);
     }
