@@ -42,14 +42,11 @@ export interface AIStudio {
  * tsc가 window.aistudio 및 process.env를 인식하도록 합니다.
  */
 declare global {
-  // Fix: Declare AIStudio globally and augment Window to avoid "Subsequent property declarations must have the same type" errors.
-  interface AIStudio {
-    hasSelectedApiKey: () => Promise<boolean>;
-    openSelectKey: () => Promise<void>;
-  }
-
   interface Window {
-    aistudio: AIStudio;
+    aistudio: {
+      hasSelectedApiKey: () => Promise<boolean>;
+      openSelectKey: () => Promise<void>;
+    };
   }
 
   namespace NodeJS {
@@ -58,9 +55,6 @@ declare global {
       [key: string]: string | undefined;
     }
   }
-
-  // Fix: Removed 'var process' declaration to fix "Cannot redeclare block-scoped variable 'process'" error.
-  // The global 'process' is provided by the environment or build shims (e.g., via vite.config.ts).
 }
 
 // 이 파일이 모듈로 취급되도록 합니다.
