@@ -17,7 +17,9 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'dist',
       sourcemap: false,
-      minify: 'terser',
+      // minify: 'terser' 옵션을 제거하여 Vite 기본값인 'esbuild'를 사용합니다.
+      // 이렇게 하면 별도의 terser 패키지 설치 없이 빌드가 성공하며 속도도 더 빠릅니다.
+      minify: 'esbuild', 
       rollupOptions: {
         output: {
           manualChunks: {

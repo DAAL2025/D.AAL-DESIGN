@@ -30,25 +30,10 @@ export interface DesignStrategy {
 }
 
 /**
- * AI Studio에서 제공하는 키 선택 도구 인터페이스
- */
-export interface AIStudio {
-  hasSelectedApiKey: () => Promise<boolean>;
-  openSelectKey: () => Promise<void>;
-}
-
-/**
  * 전역 타입 확장
- * tsc가 window.aistudio 및 process.env를 인식하도록 합니다.
+ * tsc가 process.env를 인식하도록 합니다.
  */
 declare global {
-  interface Window {
-    aistudio: {
-      hasSelectedApiKey: () => Promise<boolean>;
-      openSelectKey: () => Promise<void>;
-    };
-  }
-
   namespace NodeJS {
     interface ProcessEnv {
       API_KEY: string;
