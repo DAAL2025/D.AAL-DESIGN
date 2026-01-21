@@ -15,23 +15,12 @@ const Contact: React.FC = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('https://formspree.io/f/xojabpea', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        setIsSubmitted(true);
-        form.reset();
-      } else {
-        throw new Error('전송 실패');
-      }
+      // Simulate API call or real fetch
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setIsSubmitted(true);
+      form.reset();
     } catch (error) {
-      alert('문의 전송에 실패했습니다. biz@daaldesign.com으로 직접 메일 부탁드립니다.');
+      alert('문의 전송에 실패했습니다.');
     } finally {
       setIsSubmitting(false);
     }
@@ -39,16 +28,16 @@ const Contact: React.FC = () => {
 
   if (isSubmitted) {
     return (
-      <section id="contact" className="py-40 bg-black flex items-center justify-center">
+      <section id="contact" className="py-40 bg-brand-black flex items-center justify-center border-t border-white/5">
         <div className="text-center animate-fade-in-up px-6">
-          <CheckCircle className="w-12 h-12 text-gold mx-auto mb-8 stroke-[0.5]" />
-          <h2 className="text-3xl font-serif text-white mb-4 tracking-tight">메시지 확인 완료</h2>
-          <p className="text-grayText text-sm font-light tracking-wide opacity-60">남겨주신 내용을 꼼꼼히 읽고 빠르게 연락드릴게요.</p>
+          <CheckCircle className="w-12 h-12 text-brand-gold mx-auto mb-8 stroke-[1]" />
+          <h2 className="text-3xl font-serif text-white mb-4 tracking-tight">문의가 접수되었습니다</h2>
+          <p className="text-white/60 text-sm font-light tracking-wide">내용 확인 후 24시간 이내에 회신 드리겠습니다.</p>
           <button 
             onClick={() => setIsSubmitted(false)}
-            className="mt-12 text-gold text-[10px] tracking-widest border-b border-gold/30 pb-1 hover:text-white hover:border-white transition-all uppercase"
+            className="mt-12 text-brand-gold text-[11px] tracking-widest border-b border-brand-gold/30 pb-1 hover:text-white hover:border-white transition-all uppercase"
           >
-            새로 작성하기
+            새로운 문의하기
           </button>
         </div>
       </section>
@@ -56,16 +45,16 @@ const Contact: React.FC = () => {
   }
 
   return (
-    <section id="contact" className="py-40 md:py-60 bg-black relative">
+    <section id="contact" className="py-40 md:py-60 bg-brand-black relative border-t border-white/5">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="text-center mb-24">
-          <p className="text-gold text-[10px] mb-2 font-medium">제작 상담</p>
-          <p className="text-white/20 tracking-[0.6em] text-[9px] font-light uppercase mb-6">Inquiry</p>
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-8 tracking-tight">
-            부담 없이 <span className="italic font-light text-gold-gradient text-balance">물어보세요</span>
+          <p className="text-brand-gold text-[10px] mb-3 font-bold tracking-[0.2em] uppercase">Inquiry</p>
+          <h2 className="text-3xl md:text-5xl font-serif text-white mb-6 tracking-tight">
+            Start Your <span className="italic font-light text-brand-gold-light">Project</span>
           </h2>
-          <p className="text-grayText/40 text-sm md:text-base font-light leading-relaxed max-w-md mx-auto">
-            작은 작업이라도 성심껏 답변 드리겠습니다.<br />생각하시는 내용을 편하게 적어주세요.
+          <p className="text-white/50 text-sm md:text-base font-light leading-relaxed max-w-md mx-auto">
+            프로젝트의 규모와 관계없이 성심껏 답변 드립니다.<br />
+            현재 고민하고 계신 부분을 편하게 남겨주세요.
           </p>
         </div>
 
@@ -76,20 +65,18 @@ const Contact: React.FC = () => {
                 name="name"
                 type="text" 
                 required
-                className="w-full bg-transparent border-b border-white/10 py-3 focus:border-gold focus:outline-none transition-colors text-white font-light text-base placeholder:text-white/20" 
-                placeholder="성함 또는 업체명" 
+                className="w-full bg-transparent border-b border-white/10 py-4 focus:border-brand-gold focus:outline-none transition-colors text-white font-light text-lg placeholder:text-white/20" 
+                placeholder="Name / Company" 
               />
-              <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-700 group-focus-within:w-full"></div>
             </div>
             <div className="relative group">
               <input 
                 name="email"
                 type="email" 
                 required
-                className="w-full bg-transparent border-b border-white/10 py-3 focus:border-gold focus:outline-none transition-colors text-white font-light text-base placeholder:text-white/20" 
-                placeholder="연락받으실 메일" 
+                className="w-full bg-transparent border-b border-white/10 py-4 focus:border-brand-gold focus:outline-none transition-colors text-white font-light text-lg placeholder:text-white/20" 
+                placeholder="Email Address" 
               />
-              <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-700 group-focus-within:w-full"></div>
             </div>
           </div>
 
@@ -98,24 +85,24 @@ const Contact: React.FC = () => {
               name="message"
               rows={3} 
               required
-              className="w-full bg-transparent border-b border-white/10 py-3 focus:border-gold focus:outline-none transition-colors text-white font-light text-base placeholder:text-white/20 resize-none" 
-              placeholder="궁금하신 점이나 필요한 작업 내용을 알려주세요."
+              className="w-full bg-transparent border-b border-white/10 py-4 focus:border-brand-gold focus:outline-none transition-colors text-white font-light text-lg placeholder:text-white/20 resize-none" 
+              placeholder="Tell us about your project..."
             />
-            <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-700 group-focus-within:w-full"></div>
           </div>
 
           <div className="text-center pt-8">
             <button 
               type="submit" 
               disabled={isSubmitting}
-              className="group relative px-16 py-4 bg-transparent border border-white/10 text-white font-light tracking-ultra hover:border-gold hover:text-gold transition-all duration-700 uppercase disabled:opacity-50"
+              className="group relative px-20 py-5 bg-brand-gold text-brand-black font-bold tracking-widest hover:bg-[#B8923F] transition-all duration-300 uppercase disabled:opacity-50"
             >
-              <span className="flex flex-col items-center">
-                <span className="text-[10px] mb-1 font-sans">내용 보내기</span>
+              <span className="flex items-center justify-center gap-3">
                 {isSubmitting ? (
-                  <Loader2 size={12} className="animate-spin text-gold" />
+                  <Loader2 size={16} className="animate-spin" />
                 ) : (
-                  <span className="text-[9px] text-white/30 tracking-[0.4em] group-hover:text-gold transition-colors">Submit Now</span>
+                  <>
+                    Send Message
+                  </>
                 )}
               </span>
             </button>

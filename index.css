@@ -1,0 +1,97 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        background-color: #0B0B0E; 
+        color: #6D6E76;
+    }
+}
+
+/* Gold Shine Effect - More subtle for new palette */
+@keyframes shine { 
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Adjusted Gradient for the new Gold Palette */
+.text-gold-gradient {
+    background: linear-gradient(135deg, #C8A24A 0%, #E3D3A6 25%, #C8A24A 50%, #B8923F 75%, #C8A24A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shine 8s linear infinite;
+    display: inline-block;
+}
+
+body { 
+    overflow-x: hidden; 
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    line-height: 1.6;
+}
+
+/* Noise overlay - reduced opacity for Paper backgrounds */
+.grain-overlay::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0; 
+    opacity: 0.008;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+#root {
+    position: relative;
+    z-index: 10;
+}
+
+.text-balance { text-wrap: balance; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0B0B0E; }
+::-webkit-scrollbar-thumb { background: #1A1A1F; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #C8A24A; }
+
+.heading-luxury {
+    font-size: clamp(2.2rem, 8vw, 4.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.05em;
+    color: #0B0B0E; /* Default to Ink Black for headings */
+}
+
+.dark .heading-luxury {
+    color: #F6F2E9; /* Paper white for dark sections */
+}
+
+.sub-heading-luxury {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    line-height: 1.8;
+    letter-spacing: -0.02em;
+}
+
+/* Button Styles */
+.btn-gold {
+    background-color: #C8A24A;
+    color: #0B0B0E;
+    transition: all 0.3s ease;
+}
+.btn-gold:hover {
+    background-color: #B8923F;
+}
+.btn-gold:active {
+    background-color: #A57D33;
+}
+
+.btn-black-outline {
+    background-color: transparent;
+    border: 1px solid #0B0B0E;
+    color: #0B0B0E;
+}
+.btn-black-outline:hover {
+    background-color: #0B0B0E;
+    color: #E3D3A6;
+}
